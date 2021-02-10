@@ -1,0 +1,188 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{{blocksuper}}
+
+<style>
+    body{
+    background-color: #F8F8F8!important;
+    background-image: url('../images/glitter.jpg');
+}
+
+#profile-wrapper{
+    text-align: center;
+}
+
+#profile-pic{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+ul{
+	padding: 0;
+    list-style-type: none;
+}
+
+
+.social-links ul, li{
+	list-style-type:none;
+	display: inline-block;
+}
+
+.social{
+	width:20px;
+	height: 20px;
+}
+
+a {
+  color: purple;
+  text-decoration: none;
+  text-transform: lowercase;
+  width: 80px;
+  float: left;
+}
+
+p{
+    color: black;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+img{
+    margin-top: 50px;
+    display: flex;
+    padding:  6px;
+    float: left;
+    width: 300px;
+    margin: 6px ;
+    cursor: pointer;
+}
+
+
+</style>
+
+<body>
+
+    <br>
+    <div class="container">
+    <div class="row">
+        <div class= "col-md-3">
+            <div class="card card-body  border-info h-100">
+            <img id="profile-pic" src="{% static 'images/brii.jpg ' %}">
+            <hr>
+            <h1>Hi ,am Bridgit Kirika</h1>
+            <p>I love coding</p>
+
+            <div id="theme-options-wrapper">
+                <div data-mode="light" id="light-mode" class="theme-dot"></div>
+                <div data-mode="blue" id="blue-mode" class="theme-dot"></div>
+                <div data-mode="green" id="green-mode" class="theme-dot"></div>
+                <div data-mode="purple" id="purple-mode" class="theme-dot"></div>
+					</div>
+              </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body border-info h-100">
+            <h2 class="center">Hello,here is a little bit about myself</h2>
+            <hr>
+            <p>As a recent graduate from high school,i'm excited to continue my learning at MORINGA
+            SCHOOL ACCESS TEAM .
+            
+            <p>Am looking forward to learn more about programming and to acquire and improve
+            my skills and knowledge in coding.</p>
+            
+            <p>I am so excited to be part of the program and am looking 
+            forward to continue learning at Moringa school.</p>
+
+
+        <ul class="social-links">
+            <li><img class="social" src="{% static 'images/facebook.png' %}"></li>
+            <li><img class="social" src="{% static 'images/insta-logo.png' %}"></li>
+        </ul>
+
+        </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+			<div class="col-md-6">
+				<div class="card card-body h-100">
+					<h5>Hello,here is a little bit about myself</h5>
+					<hr>
+					<p>As a recent graduate from high school,i was excited to join MORINGA
+                    SCHOOL ACCESS TEAM .</p>
+					
+                    <p>I was looking forward to learn more about programming and to acquire and improve
+                    my skills and knowledge in coding.And i was able to acquire the skills and knowledge,
+                    and now am able to build something excited.</p>
+
+                    <p>I am so excited to be part of the program and am looking 
+                    forward to graduating at Moringa school.</p>
+					</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card card-body h-100">
+					<h5>My Expertise</h5>
+					<hr>
+                    <p class="text-center">Python/Django</p>
+                    <p class="text-center">HTML/CSS</p>
+                    <p class="text-center">Javascript/Jquery</p>
+                    <p class="text-center">Postgres</p>
+
+				</div>
+			</div>
+		</div>
+		
+        <br>
+			<div class="col-md-6">
+				<div class="card card-body h-100">
+					<h5>My interests and skills</h5>
+				<hr>
+                <p>Am interested in software programming and web design.</p>
+                
+                <ol>
+                <p>Typing faster</p>
+                <p>I have an understanding on social media</p>
+                <p>General web skills</p>
+                <p>Email communication</p>
+            </ol>
+
+				</div>
+			</div>
+		</div>
+		<br>
+
+         <br>
+
+          <h5>Here are some of my projects</h5>
+        <div class="templates d-flex flex-row">
+        {% for  image in images %}
+
+        <div class="col-md-4 ">
+            <div class="card profile-card-5">
+                <div class="card-img-block">
+               <img src="{{image.image.url}}" class="img-responsive" alt="Image" class="card-img" >
+                </div>
+                <hr>
+                    <div class="card-body pt-0">
+                    <h5 class="card-title">{{image.title}}</h5>
+                    <hr>
+                    <p class="card-text">{{image.description}}</p>
+                    <hr>
+                
+                 <span style="float:right">{{image.created|date}}</span>
+                  </p>                
+                <a class="btn btn-secondary btn-sm mt-1 mb-sm" href="{{image.url}}">View more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+  
+</body>
+{%endblock%}
